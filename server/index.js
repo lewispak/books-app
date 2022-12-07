@@ -36,7 +36,11 @@ app.get("/books", (req,res) => {
 // Post entry into databse
 app.post("/books", (req,res) => {
   const q = "INSERT INTO books (`title`,`desc`,`cover`) VALUES (?)";
-  const values = ["title from backend", "desc from backend", "cover from backend"]
+  const values = [
+    "title from backend", 
+    "desc from backend", 
+    "cover from backend"
+  ]
 
   db.query(q, [values], (err,data) => {
     if(err) return res.json(err);
