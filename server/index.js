@@ -11,6 +11,9 @@ const db = mysql.createConnection({
   database:"test"
 })
 
+// Express Middleware - allows for client json posts
+app.use(express.json())
+
 //--Routes--//
 // Routes and functions will be organised into separate folders at later stage
 
@@ -37,10 +40,10 @@ app.get("/books", (req,res) => {
 app.post("/books", (req,res) => {
   const q = "INSERT INTO books (`title`,`desc`,`cover`) VALUES (?)";
   const values = [
-    "title from backend", 
-    "desc from backend", 
-    "cover from backend"
-  ]
+    req.body.title,
+    req.body.desc,
+    req.body.cover,
+  ];
 
   db.query(q, [values], (err,data) => {
     if(err) return res.json(err);
