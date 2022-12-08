@@ -1,7 +1,8 @@
-import React from 'react'
-import { useState } from 'react'
-import { useEffect } from 'react'
-import axios from 'axios'
+import React from 'react';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Books = () => {
   // Store books within books state
@@ -33,8 +34,11 @@ const Books = () => {
           </div>
         ))}
       </div>
+      <button>
+        <Link to="/add">Add Book</Link>
+      </button>
     </div>
-  )
-}
+  );
+};
 
 export default Books
