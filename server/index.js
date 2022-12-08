@@ -1,5 +1,6 @@
-import express from 'express'
-import mysql from 'mysql'
+import express from 'express';
+import mysql from 'mysql';
+import cors from 'cors';
 
 const app = express()
 
@@ -13,6 +14,9 @@ const db = mysql.createConnection({
 
 // Express Middleware - allows for client json posts
 app.use(express.json())
+
+// Express Middleware - allows cors
+app.use(cors())
 
 //--Routes--//
 // Routes and functions will be organised into separate folders at later stage
@@ -52,6 +56,6 @@ app.post("/books", (req,res) => {
 });
 
 //--Server--//
-app.listen(3000, () => {
+app.listen(3001, () => {
   console.log("Connected to backend")
 })
